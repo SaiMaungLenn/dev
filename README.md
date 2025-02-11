@@ -5,8 +5,9 @@ In addition to core technologies, I have experience working with front-end frame
 Beyond my professional work in software development, I have a strong interest in computer music production, which I pursue as a hobby. Over the years, I have developed numerous Telegram bots and web applications, catering to various needs and enhancing automation processes. One of my most notable projects is Telemeet, a widely used dating bot designed to automate tasks and provide interactive features that improve user experience.
 
 ## Contact Me  
-- Website: [ Sai Maung Len ](https://saimaunglenn.github.io/dev/)
-- Website: [ Sai Maung Len ](https://saimaunglenn.pythonanywhere.com/)  
-- Telegram Bot: [@Telemeet](https://t.me/telemeetmmbot)
-- Telegram: [@Telegram](https://t.me/maunglenn)  
+- Website: [ Sai Maung Lenn ](https://saimaunglenn.github.io/dev/)
+- Website: [ Sai Maung Lenn ](https://saimaunglenn.pythonanywhere.com/)
+- Email : maunglenn@gmail.com
+- Telegram Bot: [Telemeet](https://t.me/telemeetmmbot)
+- Telegram: [Sai Maung Lenn](https://t.me/maunglenn)  
 - Facebook: [facebook.com/YourFacebookProfile](https://facebook.com/maunglenn)  

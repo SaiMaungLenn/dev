@@ -10,4 +10,12 @@ Beyond my professional work in software development, I have a strong interest in
 - Email : maunglenn@gmail.com
 - Telegram Bot: [Telemeet](https://t.me/telemeetmmbot)
 - Telegram: [Sai Maung Lenn](https://t.me/maunglenn)  
-- Facebook: [Sai Maung Lenn ](https://facebook.com/maunglenn)  
+- Facebook: [Sai Maung Lenn ](https://facebook.com/maunglenn)
+
+👋 Hi, I’m @SaiMaungLenn, also known as Meriko, a passionate freelance programmer and developer.
+👀 I’m interested in web development, backend systems, and mobile app development.
+🌱 I’m currently learning advanced TypeScript, backend optimizations, and improving UI/UX design skills.
+💞️ I’m looking to collaborate on innovative web applications, Telegram bot development, and open-source projects.
+😄 Pronouns: He
+⭐ Favorite : My favorite programming language is Python, and my favorite musical instrument is the Piano.
+🌍 Languages I can speak: Burmese, Kachin, Shan, English

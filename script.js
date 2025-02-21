@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const projects = document.querySelector(".project-grid");
     let currentProjectIndex = 0;
   
-    // THEME TOGGLE
+    
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
         body.classList.add(savedTheme);
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("theme", body.classList.contains("light-mode") ? "light-mode" : "dark-mode");
     });
   
-    // SMOOTH SCROLLING & ACTIVE NAV LINK
+   
     document.querySelectorAll("a[href^='#']").forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   
-    // SKILL BAR ANIMATION
+    
     function animateSkills() {
         skillBars.forEach((bar, index) => {
             setTimeout(() => bar.classList.add("active"), index * 300);
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
   
-    // LYRICS ANIMATION
+  
     function animateLyrics() {
         lyrics.forEach((line, index) => {
             setTimeout(() => line.classList.add("fade-in"), index * 1000);
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     animateLyrics();
   
-    // PROJECT CAROUSEL
+   
     function nextProject() {
         currentProjectIndex = (currentProjectIndex + 1) % projects.children.length;
         updateProjects();
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".next")?.addEventListener("click", nextProject);
     document.querySelector(".prev")?.addEventListener("click", prevProject);
   
-    // TYPING EFFECT
+    
     const textElement = document.getElementById("animated-text");
     const texts = ["Developer", "Freelancer", "Music Enthusiast", "Bot Creator"];
     let textIndex = 0;

@@ -4,14 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sai Maung Lenn</title>
+  
+  <link rel="icon" href="https://i.postimg.cc/RFnQRYNX/meriko.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="https://i.postimg.cc/RFnQRYNX/meriko.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/RFnQRYNX/meriko.png">
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
+  <div class="scroll-progress"></div>
+  <div id="particles-js"></div>
+  
   <nav>
-    <div class="container">
+    <div class="container glass">
       <h2>Sai Maung Lenn</h2>
+      <button class="mobile-menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul>
         <li>
           <a href="#about">
@@ -34,116 +48,196 @@
           </a>
         </li>
         <li>
-          <label class="switch">
-            <input type="checkbox" id="theme-toggle">
-            <span class="slider round"></span>
-          </label>
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+              <input type="checkbox" id="theme-toggle">
+              <div class="switch-container">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon fa-flip-horizontal"></i>
+                <div class="switch-circle"></div>
+              </div>
+            </label>
+          </div>
         </li>
       </ul>
     </div>
   </nav>
 
-  <header>
+  <header class="parallax-header">
     <div class="container">
-      <h1>Sai Maung Lenn</h1>
-      <p>Developer | Programmer</p>
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="glitch" data-text="Sai Maung Lenn">Sai Maung Lenn</h1>
+        <p class="typing-text"></p>
+        <div class="scroll-indicator">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          <div class="arrow"></div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
+  <section id="about" class="parallax-section">
+    <div class="container glass">
+      <h2 data-aos="fade-down">About Me</h2>
       <div class="about-content">
-        <img src="https://i.postimg.cc/SQMjmcKh/saimaunglenn.jpg" alt="Sai Maung Lenn" class="profile-photo">
-        <div class="lyric-animation">
+        <img src="https://i.postimg.cc/SQMjmcKh/saimaunglenn.jpg" alt="Sai Maung Lenn" class="profile-photo" data-aos="fade-right">
+        <div class="lyric-animation" data-aos="fade-left">
           <p><i>"Hello! I'm Sai Maung Lenn, but friends call me Meriko."</i></p>
-          <p><i>"I am a freelance developer with expertise in web development and backend systems."</i></p>
-          <p><i>"Computer music production is another hobby of mine."</i></p>
-          <p><i>"I am proficient in HTML, CSS, JavaScript, Python, C, C#, Java, SQL, SQLite, Kotlin, and Dart."</i></p>
+          <p><i>"I am a full-stack developer with expertise in modern web development, cloud services, and backend systems."</i></p>
+          <p><i>"I specialize in building scalable web applications and microservices."</i></p>
+          <p><i>"My tech stack includes React, Node.js, Python, TypeScript, MongoDB, PostgreSQL, and various cloud services."</i></p>
           <p><i>"Outside of coding, I love remixing songs using FL Studio, as well as playing the piano and guitar."</i></p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <div class="container">
-      <h2>Skills</h2>
+  <section id="skills" class="parallax-section">
+    <div class="container glass">
+      <h2 data-aos="fade-down">Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card">
+        
+        <div class="skill-card" data-aos="flip-left">
           <i class="fab fa-html5"></i>
-          <h3>HTML5</h3>
+          <h3>HTML5/CSS3</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 95%"></div>
+          </div>
         </div>
-        <div class="skill-card">
-          <i class="fab fa-css3-alt"></i>
-          <h3>CSS3</h3>
-        </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="100">
           <i class="fab fa-js"></i>
-          <h3>JavaScript</h3>
+          <h3>JavaScript/TypeScript</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 92%"></div>
+          </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="200">
+          <i class="fab fa-react"></i>
+          <h3>React/Next.js</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="300">
+          <i class="fab fa-sass"></i>
+          <h3>Sass/Tailwind</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 88%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="400">
+          <i class="fab fa-node-js"></i>
+          <h3>Node.js/Express</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="500">
           <i class="fab fa-python"></i>
-          <h3>Python</h3>
+          <h3>Python/Django</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 85%"></div>
+          </div>
         </div>
-        <div class="skill-card">
+        
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="600">
           <i class="fas fa-database"></i>
-          <h3>SQL</h3>
+          <h3>MongoDB/PostgreSQL</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 88%"></div>
+          </div>
         </div>
-        <div class="skill-card">
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="700">
+          <i class="fas fa-database"></i>
+          <h3>MySQL/SQLite</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="800">
+          <i class="fas fa-server"></i>
+          <h3>Redis/GraphQL</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 82%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="900">
+          <i class="fab fa-aws"></i>
+          <h3>AWS/Cloud Services</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 85%"></div>
+          </div>
+        </div>
+        
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="1000">
           <i class="fab fa-telegram"></i>
           <h3>Telegram Bots</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 94%"></div>
+          </div>
         </div>
-        <div class="skill-card">
-          <i class="fab fa-java"></i>
-          <h3>Java</h3>
-        </div>
-        <div class="skill-card">
+        
+        <div class="skill-card" data-aos="flip-left" data-aos-delay="1100">
           <i class="fas fa-music"></i>
           <h3>Music Production</h3>
+          <div class="skill-progress">
+            <div class="progress" style="width: 88%"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
+  <section id="projects" class="parallax-section">
+    <div class="container glass">
+      <h2 data-aos="fade-down">Projects</h2>
       <div class="project-grid">
-        <div class="project">
-          <h3>Bot Development</h3>
-          <p>I create custom Telegram bots for automating tasks and providing useful services. I have developed many Telegram bots, including a popular one called <a href="https://t.me/telemeetmmbot" style="text-decoration: none;"><strong>Telemeet</strong></a>, a dating bot.</p>
+        <div class="project" data-aos="zoom-in">
+          <div class="project-content">
+            <h3>Bot Development</h3>
+            <p>I create custom Telegram bots for automating tasks and providing useful services. I have developed many Telegram bots, including a popular one called <a href="https://t.me/telemeetmmbot" class="highlight-link"><strong>Telemeet</strong></a>, a dating bot.</p>
+          </div>
         </div>
-        <div class="project">
-          <h3>Web Developer</h3>
-          <p>I am <a href="https://t.me/maunglenn" style="text-decoration: none;"><strong>Sai Maung Lenn.</strong></a> I develop front-end websites and backend services, including database systems, to create functional and user-friendly web applications.</p>
+        <div class="project" data-aos="zoom-in" data-aos-delay="100">
+          <div class="project-content">
+            <h3>Web Developer</h3>
+            <p>I am <a href="https://t.me/maunglenn" class="highlight-link"><strong>Sai Maung Lenn.</strong></a> I develop front-end websites and backend services, including database systems, to create functional and user-friendly web applications.</p>
+          </div>
         </div>
-        <div class="project">
-          <h3>Music Remixes</h3>
-          <p>Sometimes, I <a href="https://youtu.be/dUpuo4d-O9Y?si=4Un-TqeJfJ3Fgmld" style="text-decoration: none;"><strong>Remix</strong></a> songs using FL Studio and upload them on YouTube because it’s one of my hobbies.</p>
+        <div class="project" data-aos="zoom-in" data-aos-delay="200">
+          <div class="project-content">
+            <h3>Music Remixes</h3>
+            <p>Sometimes, I <a href="https://youtu.be/dUpuo4d-O9Y?si=4Un-TqeJfJ3Fgmld" class="highlight-link"><strong>Remix</strong></a> songs using FL Studio and upload them on YouTube because it's one of my hobbies.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <div class="contact-links">
-        <a href="mailto:maunglenn@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://t.me/maunglenn"><i class="fab fa-telegram"></i></a>
-        <a href="https://www.facebook.com/maunglenn"><i class="fab fa-facebook"></i></a>
-        <a href="tel:+959780380475"><i class="fas fa-phone"></i></a>
+  <section id="contact" class="parallax-section">
+    <div class="container glass">
+      <h2 data-aos="fade-down">Contact Me</h2>
+      <div class="contact-links" data-aos="fade-up">
+        <a href="mailto:maunglenn@gmail.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
+        <a href="https://t.me/maunglenn" class="contact-icon"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.facebook.com/maunglenn" class="contact-icon"><i class="fab fa-facebook"></i></a>
+        <a href="tel:+959984027502" class="contact-icon"><i class="fas fa-phone"></i></a>
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="glass">
     <div class="container">
-      <p>&copy; 2025 Sai Maung Lenn (Meriko). All rights reserved.</p>
+      <p>&copy; 2020 Sai Maung Lenn (Meriko). All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

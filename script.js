@@ -1,33 +1,78 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const themeToggle = document.getElementById("theme-toggle");
-    const body = document.body;
+    const themeToggle = document.querySelector('#theme-toggle');
+    const body = document.querySelector('body');
     const navLinks = document.querySelectorAll("nav ul li a");
     const skillBars = document.querySelectorAll(".skill-card");
     const lyrics = document.querySelectorAll(".lyric-animation p");
-    const projects = document.querySelector(".project-grid");
+    const projectGrid = document.querySelector(".project-grid");
+    const projectItems = document.querySelectorAll('.project');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
     let currentProjectIndex = 0;
   
     
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navMenu.classList.toggle('show');
+    });
+
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            navMenu.classList.remove('show');
+        });
+    });
+
+    
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('nav') && navMenu.classList.contains('show')) {
+            mobileMenuBtn.classList.remove('active');
+            navMenu.classList.remove('show');
+        }
+    });
+
+    
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+
+    
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
+        body.classList.remove('dark-mode', 'light-mode');
         body.classList.add(savedTheme);
-        themeToggle.checked = savedTheme === "light-mode";
+        themeToggle.checked = savedTheme === "dark-mode";
     }
+
     themeToggle.addEventListener("change", function () {
-        body.classList.toggle("dark-mode");
-        body.classList.toggle("light-mode");
-        localStorage.setItem("theme", body.classList.contains("light-mode") ? "light-mode" : "dark-mode");
+        if (themeToggle.checked) {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            localStorage.setItem("theme", "dark-mode");
+        } else {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            localStorage.setItem("theme", "light-mode");
+        }
     });
   
-   
+    
     document.querySelectorAll("a[href^='#']").forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth"
-            });
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
         });
     });
+
     window.addEventListener("scroll", function () {
         let fromTop = window.scrollY;
         navLinks.forEach(link => {
@@ -37,21 +82,41 @@ document.addEventListener("DOMContentLoaded", function () {
                 link.classList.add("active");
             }
         });
+
+        
+        if (window.scrollY > 50) {
+            document.querySelector('nav').classList.add('scrolled');
+        } else {
+            document.querySelector('nav').classList.remove('scrolled');
+        }
+
+        
+        const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        document.querySelector('.scroll-progress').style.width = `${scrolled}%`;
     });
   
     
-    function animateSkills() {
-        skillBars.forEach((bar, index) => {
-            setTimeout(() => bar.classList.add("active"), index * 300);
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const progressBar = entry.target.querySelector('.progress');
+                if (progressBar) {
+                    progressBar.style.width = progressBar.style.width || '0%';
+                }
+                observer.unobserve(entry.target);
+            }
         });
-    }
-    window.addEventListener("scroll", function () {
-        if (document.getElementById("skills").getBoundingClientRect().top < window.innerHeight - 100) {
-            animateSkills();
-        }
+    }, {
+        threshold: 0.5,
+        rootMargin: '0px'
+    });
+
+    skillBars.forEach(card => {
+        skillObserver.observe(card);
     });
   
-  
+    
     function animateLyrics() {
         lyrics.forEach((line, index) => {
             setTimeout(() => line.classList.add("fade-in"), index * 1000);
@@ -59,44 +124,134 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     animateLyrics();
   
-   
+    
     function nextProject() {
-        currentProjectIndex = (currentProjectIndex + 1) % projects.children.length;
+        currentProjectIndex = (currentProjectIndex + 1) % projectGrid.children.length;
         updateProjects();
     }
+    
     function prevProject() {
-        currentProjectIndex = (currentProjectIndex - 1 + projects.children.length) % projects.children.length;
+        currentProjectIndex = (currentProjectIndex - 1 + projectGrid.children.length) % projectGrid.children.length;
         updateProjects();
     }
+    
     function updateProjects() {
-        projects.style.transform = `translateX(-${currentProjectIndex * 100}%)`;
+        projectGrid.style.transform = `translateX(-${currentProjectIndex * 100}%)`;
     }
+
     document.querySelector(".next")?.addEventListener("click", nextProject);
     document.querySelector(".prev")?.addEventListener("click", prevProject);
+
+    
+    projectItems.forEach(project => {
+        project.addEventListener('mousemove', (e) => {
+            const rect = project.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            project.style.setProperty('--mouse-x', `${x}px`);
+            project.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
   
     
-    const textElement = document.getElementById("animated-text");
-    const texts = ["Developer", "Freelancer", "Music Enthusiast", "Bot Creator"];
+    const typingText = document.querySelector('.typing-text');
+    const texts = ['Front-End', 'Back-End', 'Full-Stack', 'Database', 'Developer', 'Programmer'];
     let textIndex = 0;
     let charIndex = 0;
-    function type() {
-        if (charIndex < texts[textIndex].length) {
-            textElement.innerHTML += texts[textIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100);
-        } else {
-            setTimeout(erase, 2000);
-        }
-    }
-    function erase() {
-        if (charIndex > 0) {
-            textElement.innerHTML = texts[textIndex].substring(0, charIndex - 1);
+    let isDeleting = false;
+
+    function typeText() {
+        const currentText = texts[textIndex];
+        
+        if (isDeleting) {
+            typingText.textContent = currentText.substring(0, charIndex - 1);
             charIndex--;
-            setTimeout(erase, 50);
         } else {
+            typingText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            isDeleting = true;
+            setTimeout(typeText, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
             textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 500);
+            setTimeout(typeText, 500);
+        } else {
+            setTimeout(typeText, isDeleting ? 50 : 100);
         }
     }
-    type();
-  });
+
+    typeText();
+
+    
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 80,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
+            color: {
+                value: '#00ff88'
+            },
+            shape: {
+                type: 'circle'
+            },
+            opacity: {
+                value: 0.5,
+                random: false
+            },
+            size: {
+                value: 3,
+                random: true
+            },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#00ff88',
+                opacity: 0.4,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 2,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: {
+                    enable: true,
+                    mode: 'grab'
+                },
+                onclick: {
+                    enable: true,
+                    mode: 'push'
+                },
+                resize: true
+            },
+            modes: {
+                grab: {
+                    distance: 140,
+                    line_linked: {
+                        opacity: 1
+                    }
+                },
+                push: {
+                    particles_nb: 4
+                }
+            }
+        },
+        retina_detect: true
+    });
+});
